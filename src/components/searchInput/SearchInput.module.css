@@ -1,0 +1,20 @@
+/** @format */
+
+/* .wrapper {
+  color: var(--text-color-secondary);
+} */
+
+.input {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-secondary);
+}
+
+.input input::placeholder {
+  color: var(--text-color-secondary);
+}
+
+.input span {
+  color: var(--text-color-secondary);
+  padding-right: 0;
+}
+
