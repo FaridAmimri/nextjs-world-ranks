@@ -1,0 +1,38 @@
+/** @format */
+
+.heading {
+  display: flex;
+  margin: 20px 0;
+}
+
+.heading_name,
+.heading_population {
+  flex: 1;
+}
+
+.heading_name span,
+.heading_population span {
+  color: var(--text-color-secondary);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  background-color: var(--background-color-light);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow);
+  transition: transform 200ms ease-in-out;
+}
+
+.row:hover {
+  transform: translateY(-5px);
+}
+
+.name,
+.population {
+  flex: 1;
+  text-align: center;
+}
