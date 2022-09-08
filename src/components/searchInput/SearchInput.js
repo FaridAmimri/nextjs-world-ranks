@@ -5,7 +5,7 @@ import styles from './SearchInput.module.css'
 import { Input } from '@nextui-org/react'
 import { FaSistrix } from 'react-icons/fa'
 
-export default function SearchInput({ ...rest }) {
+function SearchInput({ ...rest }) {
   return (
     <Input
       id='input'
@@ -22,3 +22,5 @@ export default function SearchInput({ ...rest }) {
     />
   )
 }
+
+export default SearchInput
