@@ -10,11 +10,24 @@
   flex: 1;
 }
 
+/* .heading_name {
+  justify-content: flex-start;
+} */
+
 .heading_name span,
 .heading_population span {
   color: var(--text-color-secondary);
   font-weight: 900;
   cursor: pointer;
+}
+
+.heading_arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: large;
+  padding-left: 5px;
 }
 
 .row {
