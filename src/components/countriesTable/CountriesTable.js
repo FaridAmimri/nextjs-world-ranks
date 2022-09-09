@@ -1,9 +1,10 @@
 /** @format */
 
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './CountriesTable.module.css'
 import { Button } from '@nextui-org/react'
 import { FaAngleDown } from 'react-icons/fa'
+import { FaAngleUp } from 'react-icons/fa'
 
 function orderBy(countries, direction) {
   if (direction === 'asc') {
@@ -17,24 +18,48 @@ function orderBy(countries, direction) {
   return countries
 }
 
+function SortArrow({ direction }) {
+  if (direction === 'desc') {
+    return (
+      <div className={styles.heading_arrow}>
+        <FaAngleDown />
+      </div>
+    )
+  } else if (direction === 'asc') {
+    return (
+      <div className={styles.heading_arrow}>
+        <FaAngleUp />
+      </div>
+    )
+  }
+}
+
 function CountriesTable({ countries }) {
+  const [direction, setDirection] = useState()
+
   const orderedCountries = orderBy(countries, 'desc')
+
+  function switchDirection() {
+    if (!direction) {
+      setDirection('desc')
+    } else if (direction === 'desc') {
+      setDirection('asc')
+    } else {
+      setDirection(null)
+    }
+  }
 
   return (
     <div>
       <div className={styles.heading}>
-        <Button light className={styles.heading_name}>
+        <Button light className={styles.heading_name} onPress={switchDirection}>
           <span>Name</span>
-          <div className={styles.heading_arrow}>
-            <FaAngleDown />
-          </div>
+          <SortArrow direction={direction} />
         </Button>
 
-        <Button light className={styles.heading_population}>
+        <Button light className={styles.heading_population} onPress={switchDirection}>
           <span>Population</span>
-          <div className={styles.heading_arrow}>
-            <FaAngleDown />
-          </div>
+          <SortArrow direction={direction} />
         </Button>
       </div>
 
