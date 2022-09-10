@@ -6,26 +6,30 @@ import { Button } from '@nextui-org/react'
 import { FaAngleDown } from 'react-icons/fa'
 import { FaAngleUp } from 'react-icons/fa'
 
-function orderBy(countries, direction) {
+function orderBy(countries, value, direction) {
   if (direction === 'asc') {
-    return [...countries].sort((a, b) => (a.population > b.population ? 1 : -1))
+    return [...countries].sort((a, b) => (a[value] > b[value] ? 1 : -1))
   }
 
   if (direction === 'desc') {
-    return [...countries].sort((a, b) => (a.population > b.population ? -1 : 1))
+    return [...countries].sort((a, b) => (a[value] > b[value] ? -1 : 1))
   }
 
   return countries
 }
 
 function SortArrow({ direction }) {
+  if (!direction) {
+    return <></>
+  }
+
   if (direction === 'desc') {
     return (
       <div className={styles.heading_arrow}>
         <FaAngleDown />
       </div>
     )
-  } else if (direction === 'asc') {
+  } else {
     return (
       <div className={styles.heading_arrow}>
         <FaAngleUp />
@@ -35,9 +39,10 @@ function SortArrow({ direction }) {
 }
 
 function CountriesTable({ countries }) {
-  const [direction, setDirection] = useState()
+  const [direction, setDirection] = useState(null)
+  const [value, setValue] = useState()
 
-  const orderedCountries = orderBy(countries, 'desc')
+  const orderedCountries = orderBy(countries, value, direction)
 
   function switchDirection() {
     if (!direction) {
@@ -49,15 +54,23 @@ function CountriesTable({ countries }) {
     }
   }
 
+  function sortAscOrDesc(value) {
+    switchDirection()
+    setValue(value)
+  }
+
   return (
     <div>
       <div className={styles.heading}>
-        <Button light className={styles.heading_name} onPress={switchDirection}>
+        <Button light className={styles.heading_name}>
           <span>Name</span>
-          <SortArrow direction={direction} />
         </Button>
 
-        <Button light className={styles.heading_population} onPress={switchDirection}>
+        <Button
+          light
+          className={styles.heading_population}
+          onPress={() => sortAscOrDesc('population')}
+        >
           <span>Population</span>
           <SortArrow direction={direction} />
         </Button>
