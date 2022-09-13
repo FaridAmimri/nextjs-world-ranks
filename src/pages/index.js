@@ -1,5 +1,6 @@
 /** @format */
 
+import React, { useState } from 'react'
 import Layout from '../components/layout/Layout'
 import styles from '../styles/Home.module.css'
 import SearchInput from '../components/searchInput/SearchInput'
@@ -7,7 +8,7 @@ import CountriesTable from '../components/countriesTable/CountriesTable'
 
 // Get the data at the build time (will only be updated when we rebuild the project )
 export const getStaticProps = async () => {
-  const res = await fetch('https://restcountries.com/v3.1/all')
+  const res = await fetch('https://restcountries.com/v3/all')
   const countries = await res.json()
 
   return {
@@ -18,13 +19,27 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({ countries }) {
+  const [keyword, setKeyword] = useState('')
+
+  const filteredCountries = countries.filter((country) =>
+    country.name.common.toLowerCase().includes(keyword) || country.region.toLowerCase().includes(keyword)
+  )
+
+  function handleInputChange(e) {
+    e.preventDefault()
+    setKeyword(e.target.value.toLowerCase())
+  }
+
   return (
     <Layout>
       <div className={styles.counts}>Found {countries.length} countries</div>
 
-      <SearchInput />
+      <SearchInput
+        placeholder='Filter by Country or Region'
+        onChange={handleInputChange}
+      />
 
-      <CountriesTable countries={countries} />
+      <CountriesTable countries={filteredCountries} />
     </Layout>
   )
 }
