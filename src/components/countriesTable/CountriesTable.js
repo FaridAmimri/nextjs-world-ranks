@@ -63,7 +63,7 @@ function CountriesTable({ countries }) {
     <div>
       <div className={styles.heading}>
         <Button light className={styles.heading_name}>
-          <span>Name</span>
+          <span>Country</span>
         </Button>
 
         <Button

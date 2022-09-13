@@ -10,9 +10,7 @@ function SearchInput({ ...rest }) {
     <Input
       id='input'
       className={styles.input}
-      placeholder='Filter by Name, Region or SubRegion'
       aria-label='input-search'
-      clearable
       bordered
       color='success'
       size='xl'
