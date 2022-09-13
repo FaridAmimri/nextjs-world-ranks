@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useState } from 'react'
+import Link from 'next/link'
 import styles from './CountriesTable.module.css'
 import { Button } from '@nextui-org/react'
 import { FaAngleDown } from 'react-icons/fa'
@@ -77,10 +78,12 @@ function CountriesTable({ countries }) {
       </div>
 
       {orderedCountries.map((country) => (
-        <div className={styles.row} key={country.cca2}>
-          <div className={styles.name}>{country.name.common}</div>
-          <div className={styles.population}>{country.population}</div>
-        </div>
+        <Link href={`/country/${country.ccn3}`} key={country.cca2}>
+          <div className={styles.row}>
+            <div className={styles.name}>{country.name.common}</div>
+            <div className={styles.population}>{country.population}</div>
+          </div>
+        </Link>
       ))}
     </div>
   )
