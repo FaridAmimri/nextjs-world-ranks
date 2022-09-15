@@ -78,9 +78,9 @@ function CountriesTable({ countries }) {
       </div>
 
       {orderedCountries.map((country) => (
-        <Link href={`/country/${country.ccn3}`} key={country.cca2}>
+        <Link href={`/country/${country.alpha3Code}`} key={country.name}>
           <div className={styles.row}>
-            <div className={styles.name}>{country.name.common}</div>
+            <div className={styles.name}>{country.name}</div>
             <div className={styles.population}>{country.population}</div>
           </div>
         </Link>
