@@ -8,7 +8,8 @@ import CountriesTable from '../components/countriesTable/CountriesTable'
 
 // Get the data at the build time (will only be updated when we rebuild the project )
 export const getStaticProps = async () => {
-  const res = await fetch('https://restcountries.com/v3/all')
+  const res = await fetch('https://restcountries.com/v2/all')
+
   const countries = await res.json()
 
   return {
@@ -22,7 +23,7 @@ export default function Home({ countries }) {
   const [keyword, setKeyword] = useState('')
 
   const filteredCountries = countries.filter((country) =>
-    country.name.common.toLowerCase().includes(keyword) || country.region.toLowerCase().includes(keyword)
+    country.name.toLowerCase().includes(keyword) || country.region.toLowerCase().includes(keyword)
   )
 
   function handleInputChange(e) {
