@@ -1,13 +1,19 @@
 /** @format */
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../../components/layout/Layout'
 import styles from './country.module.css'
 
-export const getServerSideProps = async ({ params }) => {
-  const res = await fetch(`https://restcountries.com/v2/alpha/${params.id}`)
+const getCountry = async (id) => {
+  const res = await fetch(`https://restcountries.com/v2/alpha/${id}`)
 
   const country = await res.json()
+
+  return country
+}
+
+export const getServerSideProps = async ({ params }) => {
+  const country = await getCountry(params.id)
 
   return {
     props: {
@@ -17,7 +23,17 @@ export const getServerSideProps = async ({ params }) => {
 }
 
 function Country({ country }) {
-  console.log(country)
+  const [borders, setBorders] = useState([])
+
+  const getBorders = async () => {
+    const borders = await Promise.all(country.borders.map((border) => border))
+    setBorders(borders)
+  }
+
+  useEffect(() => {
+    getBorders()
+  }, [])
+
   return (
     <Layout title={country.name}>
       <div className={styles.overview}>
@@ -75,6 +91,17 @@ function Country({ country }) {
         <div className={styles.details_content}>
           <div className={styles.details_label}>Subregion</div>
           <div className={styles.details_value}>{country.subregion}</div>
+        </div>
+
+        <div className={styles.details_content}>
+          <div className={styles.details_borders}>
+            <div className={styles.details_label}>Neighbouring Countries</div>
+            <div className={styles.details_border}>
+              {borders.map((border, index) => (
+                <h4 key={index}>{border}</h4>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
