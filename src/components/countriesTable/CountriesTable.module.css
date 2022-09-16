@@ -10,10 +10,6 @@
   flex: 1;
 }
 
-/* .heading_name {
-  justify-content: flex-start;
-} */
-
 .heading_name span,
 .heading_population span {
   color: var(--text-color-secondary);
@@ -42,6 +38,7 @@
 
 .row:hover {
   transform: translateY(-5px);
+  cursor: pointer;
 }
 
 .name,
