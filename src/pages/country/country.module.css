@@ -6,6 +6,8 @@
 }
 
 .overview {
+  width: 100%;
+  margin-bottom: 40px;
   padding: 20px;
   border-radius: 8px;
   box-shadow: var(--box-shadow);
@@ -37,6 +39,7 @@
 }
 
 .details {
+  width: 100%;
   background-color: var(--background-color-light);
   box-shadow: var(--box-shadow);
   border-radius: 8px;
@@ -71,3 +74,17 @@
   margin: 0;
 }
 
+@media screen and (min-width: 769px) {
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .overview {
+    width: 352px;
+    height: 462px;
+    margin: 0 30px 40px 0;
+  }
+  .details {
+    width: 70%;
+  }
+}
