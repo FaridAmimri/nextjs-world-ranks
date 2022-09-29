@@ -75,13 +75,38 @@ function CountriesTable({ countries }) {
           <span>Population</span>
           <SortArrow direction={direction} />
         </Button>
+
+        <Button
+          light
+          className={styles.heading_area}
+          onPress={() => sortAscOrDesc('area')}
+        >
+          <span>
+            Area(km<sup style={{ fontSize: '0.5rem' }}>2</sup>)
+          </span>
+          <SortArrow direction={direction} />
+        </Button>
+
+        <Button
+          light
+          className={styles.heading_gini}
+          onPress={() => sortAscOrDesc('gini')}
+        >
+          <span>Gini</span>
+          <SortArrow direction={direction} />
+        </Button>
       </div>
 
       {orderedCountries.map((country) => (
         <Link href={`/country/${country.alpha3Code}`} key={country.name}>
           <div className={styles.row}>
+            <picture>
+              <img src={country.flag} alt={country.name}></img>
+            </picture>
             <div className={styles.name}>{country.name}</div>
             <div className={styles.population}>{country.population}</div>
+            <div className={styles.area}>{country.area || 0}</div>
+            <div className={styles.gini}>{country.gini || 0}%</div>
           </div>
         </Link>
       ))}

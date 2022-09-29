@@ -3,6 +3,13 @@
 .heading {
   display: flex;
   margin: 20px 0;
+  width: 20rem;
+}
+
+.heading button {
+  flex: 2 1;
+  text-align: center;
+  padding-right: 50px;
 }
 
 .heading_name,
@@ -11,10 +18,13 @@
 }
 
 .heading_name span,
-.heading_population span {
+.heading_population span,
+.heading_area span,
+.heading_gini span {
   color: var(--text-color-secondary);
   font-weight: 900;
   cursor: pointer;
+  width: 20%;
 }
 
 .heading_arrow {
@@ -29,7 +39,7 @@
 .row {
   display: flex;
   background-color: var(--background-color-light);
-  padding: 20px;
+  padding: 15px;
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: var(--box-shadow);
@@ -41,8 +51,44 @@
   cursor: pointer;
 }
 
-.name,
-.population {
-  flex: 1;
-  text-align: center;
+.row img {
+  width: 50px;
+  height: 38px;
+  border-radius: 4px;
 }
+
+.name,
+.population,
+.area,
+.gini {
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 769px) {
+  .heading {
+    width: 97%;
+  }
+
+  .heading button {
+    padding-right: 50px;
+  }
+
+  .heading button:nth-child(3),
+  .heading button:nth-child(4) {
+    display: none;
+  }
+
+  .area,
+  .gini {
+    display: none;
+  }
+}
+
+/* @media screen and (max-width: 425px) {
+  .heading {
+    width: 90%;
+  }
+} */
