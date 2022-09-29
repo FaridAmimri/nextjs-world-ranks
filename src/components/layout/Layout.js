@@ -15,7 +15,7 @@ function Layout({ children, title = 'World Ranks' }) {
       </Head>
 
       <header className={styles.header}>
-       <Image src={Logo} alt='logo' />
+        <Image src={Logo} alt='logo' />
       </header>
 
       <main className={styles.main}>{children}</main>
