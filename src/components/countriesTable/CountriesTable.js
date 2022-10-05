@@ -79,21 +79,17 @@ function CountriesTable({ countries }) {
         <Button
           light
           className={styles.heading_area}
-          onPress={() => sortAscOrDesc('area')}
         >
           <span>
-            Area(km<sup style={{ fontSize: '0.5rem' }}>2</sup>)
+            Area (km<sup style={{ fontSize: '0.5rem' }}>2</sup>)
           </span>
-          <SortArrow direction={direction} />
         </Button>
 
         <Button
           light
           className={styles.heading_gini}
-          onPress={() => sortAscOrDesc('gini')}
         >
           <span>Gini</span>
-          <SortArrow direction={direction} />
         </Button>
       </div>
 
