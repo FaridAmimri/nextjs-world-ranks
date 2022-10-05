@@ -15,8 +15,16 @@
   margin-bottom: 32px;
 }
 
-.main {
-  
+.themeSwitcher {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+
+  color: var(--text-color-secondary);
+  margin-left: 4px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .footer {
