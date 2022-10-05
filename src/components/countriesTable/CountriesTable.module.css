@@ -3,7 +3,6 @@
 .heading {
   display: flex;
   margin: 20px 0;
-  width: 20rem;
 }
 
 .heading button {
@@ -33,7 +32,7 @@
   justify-content: center;
   color: var(--primary-color);
   font-size: large;
-  padding-left: 5px;
+  padding-left: 5rem;
 }
 
 .row {
@@ -86,9 +85,3 @@
     display: none;
   }
 }
-
-/* @media screen and (max-width: 425px) {
-  .heading {
-    width: 90%;
-  }
-} */
