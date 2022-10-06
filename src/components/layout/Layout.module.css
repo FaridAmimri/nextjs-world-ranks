@@ -15,20 +15,33 @@
   margin-bottom: 32px;
 }
 
+.footer {
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 20px 0;
+}
+
+.socialMedia svg {
+  color: var(--primary-color);
+  margin: 10px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.portfolio {
+  color: var(--text-color-secondary);
+  font-size: 15px;
+}
+
 .themeSwitcher {
   border: none;
   background-color: transparent;
   padding: 0;
-
+  cursor: pointer;
+  font-size: 20px;
   color: var(--text-color-secondary);
-  margin-left: 4px;
+  margin-left: 5px;
   display: flex;
   align-content: center;
   justify-content: center;
-}
-
-.footer {
-  text-align: center;
-  font-size: 0.75rem;
-  margin-top: 32px;
 }
