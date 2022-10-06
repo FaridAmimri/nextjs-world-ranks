@@ -43,13 +43,3 @@ a {
   color: inherit;
   font: inherit;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-} */
